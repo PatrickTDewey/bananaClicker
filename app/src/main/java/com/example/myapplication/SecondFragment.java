@@ -62,8 +62,8 @@ public class SecondFragment extends Fragment {
 
         double bpcPrice = 10 * Math.pow(1.15, bpcU);
         Integer intBcpPrice = (int) Math.floor(bpcPrice);
-        String priceText = getString(R.string.bpcPrice, intBcpPrice);
-        bpcPriceView.setText(priceText);
+        String bcpPriceText = getString(R.string.bpcPrice, intBcpPrice);
+        bpcPriceView.setText(bcpPriceText);
         String bpcText = getString(R.string.bpcView, (bpcU + 1));
         bpcUpgrades.setText(bpcText);
 
@@ -84,7 +84,6 @@ public class SecondFragment extends Fragment {
                     count -= intBcpPrice;
                     bpcU++;
                     String countText = getString(R.string.random_text, count);
-                    TextView headerView = binding.textView;
                     headerView.setText(countText);
                     double bpcPrice = 10 * Math.pow(1.15, bpcU);
                     Integer intBcpPrice = (int) Math.floor(bpcPrice);
