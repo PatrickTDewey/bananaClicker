@@ -23,8 +23,10 @@ public class FirstFragment extends Fragment {
 //    private Integer count;
     private Integer bpcU;
     private Integer gpbU;
-    private Integer prestige;
-    private Integer level;
+    private Integer prestige =1;
+    private Integer level =1;
+    private Integer bpcM;
+    private Integer gpbM;
 
     @Override
     public View onCreateView(
@@ -45,7 +47,13 @@ public class FirstFragment extends Fragment {
         String countString = showCountTextView.getText().toString();
         // Convert to number and increment
         Integer count = Integer.parseInt(countString);
-        count += bpcU;
+        if (bpcU == null){
+            count++;
+        } else {
+            bpcM = (bpcU +1) * level * prestige;
+            gpbM = (gpbU +1) * level * prestige;
+            count += (bpcM * gpbM);
+        }
         // Display the new value in the text view
         showCountTextView.setText(Integer.toString(count));
     }
@@ -62,6 +70,8 @@ public class FirstFragment extends Fragment {
             level = query.getInt(4);
             prestige = query.getInt(5);
             System.out.println(bpcU);
+            System.out.println("prestige: " + prestige);
+            System.out.println("level: " + level);
         }
         query.close();
         my_db.close();

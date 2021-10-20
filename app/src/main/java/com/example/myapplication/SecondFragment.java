@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -71,11 +72,16 @@ public class SecondFragment extends Fragment {
         binding.bananaperclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            count -= 10;
-            bpcU++;
-            String countText = getString(R.string.random_text, count);
-            TextView headerView = binding.textView;
-            headerView.setText(countText);
+                if (count > 10) {
+                    count -= 10;
+                    bpcU++;
+                    String countText = getString(R.string.random_text, count);
+                    TextView headerView = binding.textView;
+                    headerView.setText(countText);
+                } else {
+                    Toast myToast = Toast.makeText(getActivity(), "Insufficient Funds :( CLICK MOAR", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
             }
         });
     }

@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         SQLiteDatabase sqLiteDatabase = getBaseContext().openOrCreateDatabase("banana.db", MODE_PRIVATE, null);
 
-        String sql = "CREATE TABLE IF NOT EXISTS user(id INTEGER PRIMARY KEY, count TEXT, bpcU INTEGER DEFAULT 0, gpbU INTEGER DEFAULT 0, level INTEGER DEFAULT 0, prestige INTEGER DEFAULT 0);";
+        String sql = "CREATE TABLE IF NOT EXISTS user(id INTEGER PRIMARY KEY, count TEXT, bpcU INTEGER DEFAULT 0, gpbU INTEGER DEFAULT 0, level INTEGER DEFAULT 1, prestige INTEGER DEFAULT 1);";
 //        String sql = "DROP TABLE user;";
         sqLiteDatabase.execSQL(sql);
         sqLiteDatabase.close();
