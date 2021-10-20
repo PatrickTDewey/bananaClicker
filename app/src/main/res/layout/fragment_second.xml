@@ -36,4 +36,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bpcPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bpcPrice"
+        app:layout_constraintBottom_toBottomOf="@+id/bananaperclick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bananaperclick"
+        app:layout_constraintTop_toTopOf="@+id/bananaperclick" />
+
+    <TextView
+        android:id="@+id/bpcView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bpcView"
+        app:layout_constraintBottom_toBottomOf="@+id/bananaperclick"
+        app:layout_constraintEnd_toStartOf="@+id/bananaperclick"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bananaperclick" />
 </androidx.constraintlayout.widget.ConstraintLayout>

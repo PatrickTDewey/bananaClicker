@@ -15,8 +15,6 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentSecondBinding;
 
-import java.util.Random;
-
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
@@ -56,10 +54,18 @@ public class SecondFragment extends Fragment {
 
 
         String countText = getString(R.string.random_text, count);
-
+        TextView bpcPriceView = binding.bpcPrice;
         TextView headerView = binding.textView;
+        TextView bpcUpgrades = binding.bpcView;
 
         headerView.setText(countText);
+
+        double bpcPrice = 10 * Math.pow(1.15, bpcU);
+        Integer intBcpPrice = (int) Math.floor(bpcPrice);
+        String priceText = getString(R.string.bpcPrice, intBcpPrice);
+        bpcPriceView.setText(priceText);
+        String bpcText = getString(R.string.bpcView, (bpcU + 1));
+        bpcUpgrades.setText(bpcText);
 
 
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
@@ -72,12 +78,22 @@ public class SecondFragment extends Fragment {
         binding.bananaperclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (count > 10) {
-                    count -= 10;
+
+
+                if (count > intBcpPrice) {
+                    count -= intBcpPrice;
                     bpcU++;
                     String countText = getString(R.string.random_text, count);
                     TextView headerView = binding.textView;
                     headerView.setText(countText);
+                    double bpcPrice = 10 * Math.pow(1.15, bpcU);
+                    Integer intBcpPrice = (int) Math.floor(bpcPrice);
+                    String priceText = getString(R.string.bpcPrice, intBcpPrice);
+                    bpcPriceView.setText(priceText);
+                    String bpcText = getString(R.string.bpcView, (bpcU + 1));
+                    bpcUpgrades.setText(bpcText);
+                    System.out.println("Integer Price: " + intBcpPrice);
+
                 } else {
                     Toast myToast = Toast.makeText(getActivity(), "Insufficient Funds :( CLICK MOAR", Toast.LENGTH_SHORT);
                     myToast.show();

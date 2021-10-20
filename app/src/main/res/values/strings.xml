@@ -13,5 +13,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="random_text">Your gold: %d</string>
     <string name="random_header">R</string>
-    <string name="bpc">Increase Banana Per Click</string>
+    <string name="bpc">Bananas Per Click +1</string>
+    <string name="bpcPrice">Cost: %d</string>
+    <string name="bpcView">%d</string>
 </resources>

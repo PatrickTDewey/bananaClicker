@@ -2,26 +2,17 @@ package com.example.myapplication;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
-import com.example.myapplication.databinding.ActivityMainBinding;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.PersistableBundle;
-import android.view.View;
-
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-
-import android.view.Menu;
-import android.view.MenuItem;
-
-import pl.droidsonroids.gif.GifImageView;
+import com.example.myapplication.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
