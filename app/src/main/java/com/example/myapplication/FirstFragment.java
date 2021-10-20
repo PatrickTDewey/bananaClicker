@@ -20,6 +20,11 @@ public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
     private TextView showCountTextView;
+//    private Integer count;
+    private Integer bpcU;
+    private Integer gpbU;
+    private Integer prestige;
+    private Integer level;
 
     @Override
     public View onCreateView(
@@ -40,7 +45,7 @@ public class FirstFragment extends Fragment {
         String countString = showCountTextView.getText().toString();
         // Convert to number and increment
         Integer count = Integer.parseInt(countString);
-        count++;
+        count += bpcU;
         // Display the new value in the text view
         showCountTextView.setText(Integer.toString(count));
     }
@@ -52,7 +57,11 @@ public class FirstFragment extends Fragment {
         Cursor query = my_db.rawQuery("SELECT * FROM user;", null);
         if (query.moveToFirst()) {
             showCountTextView.setText(query.getString(1));
-            System.out.println(showCountTextView.getText().toString());
+            bpcU = query.getInt(2);
+            gpbU = query.getInt(3);
+            level = query.getInt(4);
+            prestige = query.getInt(5);
+            System.out.println(bpcU);
         }
         query.close();
         my_db.close();
@@ -104,7 +113,7 @@ public class FirstFragment extends Fragment {
     @Override
     public void onPause() {
         SQLiteDatabase my_db = requireActivity().openOrCreateDatabase("banana.db", 0, null);
-        String sql = "INSERT OR REPLACE INTO user (id, count) VALUES(1,"+showCountTextView.getText().toString()+");" ;
+        String sql = "INSERT OR REPLACE INTO user (id, count, bpcU, gpbU, level, prestige) VALUES(1,"+showCountTextView.getText().toString()+","+bpcU+","+gpbU+","+level+","+prestige+");" ;
         my_db.execSQL(sql);
         my_db.close();
         super.onPause();
