@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         SQLiteDatabase sqLiteDatabase = getBaseContext().openOrCreateDatabase("banana.db", MODE_PRIVATE, null);
 
-        String sql = "CREATE TABLE IF NOT EXISTS user(count TEXT);";
+        String sql = "CREATE TABLE IF NOT EXISTS user(id INTEGER PRIMARY KEY, count TEXT);";
         sqLiteDatabase.execSQL(sql);
         sqLiteDatabase.close();
         binding = ActivityMainBinding.inflate(getLayoutInflater());

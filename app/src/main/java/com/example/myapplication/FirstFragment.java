@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +15,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myapplication.databinding.FragmentFirstBinding;
-
-import java.util.Objects;
-
-import pl.droidsonroids.gif.GifImageView;
 
 public class FirstFragment extends Fragment {
 
@@ -56,7 +51,7 @@ public class FirstFragment extends Fragment {
         SQLiteDatabase my_db = requireActivity().openOrCreateDatabase("banana.db", 0, null);
         Cursor query = my_db.rawQuery("SELECT * FROM user;", null);
         if (query.moveToFirst()) {
-            showCountTextView.setText(query.getString(0));
+            showCountTextView.setText(query.getString(1));
             System.out.println(showCountTextView.getText().toString());
         }
         query.close();
@@ -109,7 +104,7 @@ public class FirstFragment extends Fragment {
     @Override
     public void onPause() {
         SQLiteDatabase my_db = requireActivity().openOrCreateDatabase("banana.db", 0, null);
-        String sql = "UPDATE user SET count = "+showCountTextView.getText().toString()+";" ;
+        String sql = "INSERT OR REPLACE INTO user (id, count) VALUES(1,"+showCountTextView.getText().toString()+");" ;
         my_db.execSQL(sql);
         my_db.close();
         super.onPause();
