@@ -34,11 +34,7 @@ public class SecondFragment extends Fragment {
 
         Integer count = SecondFragmentArgs.fromBundle(getArguments()).getMyNum();
 
-        Random random = new java.util.Random();
-        Integer randomNumber = 0;
-        if (count > 0) {
-            randomNumber = random.nextInt(count + 1);
-        }
+
 
         String countText = getString(R.string.random_text, count);
 
@@ -46,8 +42,6 @@ public class SecondFragment extends Fragment {
 
         headerView.setText(countText);
 
-        TextView randomView = binding.textviewSecond;
-        randomView.setText(randomNumber.toString());
 
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
