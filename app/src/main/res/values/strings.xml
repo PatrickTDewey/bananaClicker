@@ -13,10 +13,10 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="random_text">Your gold: %d</string>
     <string name="random_header">R</string>
-    <string name="bpc">Bananas Per Click +1</string>
+    <string name="bpc">Bananas/Click++</string>
     <string name="bpcPrice">Cost: %d</string>
     <string name="bpcView">%d</string>
-    <string name="gpbButtonText">Gold Per Banana + 1</string>
+    <string name="gpbButtonText">Gold/Banana++</string>
     <string name="gpbUText">%d</string>
     <string name="gpbCostText">Cost: %d</string>
 </resources>
