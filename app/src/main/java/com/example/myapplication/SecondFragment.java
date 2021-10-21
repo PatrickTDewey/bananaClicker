@@ -23,6 +23,8 @@ public class SecondFragment extends Fragment {
     private Integer gpbU;
     private Integer prestige;
     private Integer level;
+    private Integer intBcpPrice;
+    private Integer intGpbPrice;
 
     @Override
     public View onCreateView(
@@ -57,15 +59,25 @@ public class SecondFragment extends Fragment {
         TextView bpcPriceView = binding.bpcPrice;
         TextView headerView = binding.textView;
         TextView bpcUpgrades = binding.bpcView;
+        TextView gpbUpgrades = binding.gpbUText;
+        TextView gpbPriceView = binding.gpbCostText;
 
         headerView.setText(countText);
 
         double bpcPrice = 10 * Math.pow(1.15, bpcU);
-        Integer intBcpPrice = (int) Math.floor(bpcPrice);
+        intBcpPrice = (int) Math.floor(bpcPrice);
         String bcpPriceText = getString(R.string.bpcPrice, intBcpPrice);
         bpcPriceView.setText(bcpPriceText);
         String bpcText = getString(R.string.bpcView, (bpcU + 1));
         bpcUpgrades.setText(bpcText);
+
+        double gpbPrice = 10 * Math.pow(1.15, gpbU);
+        intGpbPrice = (int) Math.floor(gpbPrice);
+        String gpbPriceText = getString(R.string.gpbCostText, intGpbPrice);
+        gpbPriceView.setText(gpbPriceText);
+        String gpbUpgradesText = getString(R.string.gpbUText, (gpbU +1));
+        gpbUpgrades.setText(gpbUpgradesText);
+
 
 
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
@@ -80,13 +92,13 @@ public class SecondFragment extends Fragment {
             public void onClick(View view) {
 
 
-                if (count > intBcpPrice) {
+                if (count >= intBcpPrice) {
                     count -= intBcpPrice;
                     bpcU++;
                     String countText = getString(R.string.random_text, count);
                     headerView.setText(countText);
                     double bpcPrice = 10 * Math.pow(1.15, bpcU);
-                    Integer intBcpPrice = (int) Math.floor(bpcPrice);
+                    intBcpPrice = (int) Math.floor(bpcPrice);
                     String priceText = getString(R.string.bpcPrice, intBcpPrice);
                     bpcPriceView.setText(priceText);
                     String bpcText = getString(R.string.bpcView, (bpcU + 1));
@@ -97,6 +109,29 @@ public class SecondFragment extends Fragment {
                     Toast myToast = Toast.makeText(getActivity(), "Insufficient Funds :( CLICK MOAR", Toast.LENGTH_SHORT);
                     myToast.show();
                 }
+            }
+
+        });
+        binding.goldperbanana.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count >= intGpbPrice){
+                    count -= intGpbPrice;
+                    gpbU++;
+                    String countText = getString(R.string.random_text, count);
+                    headerView.setText(countText);
+                    double gpbPrice = 10 * Math.pow(1.15, gpbU);
+                    intGpbPrice = (int) Math.floor(gpbPrice);
+                    String gpbPriceText = getString(R.string.gpbCostText, intGpbPrice);
+                    gpbPriceView.setText(gpbPriceText);
+                    String gpbUpgradesText = getString(R.string.gpbUText, (gpbU +1));
+                    gpbUpgrades.setText(gpbUpgradesText);
+                } else {
+                    Toast myToast = Toast.makeText(getActivity(), "Insufficient Funds :( CLICK MOAR", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+
             }
         });
     }

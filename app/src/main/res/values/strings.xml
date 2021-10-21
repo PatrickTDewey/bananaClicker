@@ -16,4 +16,7 @@
     <string name="bpc">Bananas Per Click +1</string>
     <string name="bpcPrice">Cost: %d</string>
     <string name="bpcView">%d</string>
+    <string name="gpbButtonText">Gold Per Banana + 1</string>
+    <string name="gpbUText">%d</string>
+    <string name="gpbCostText">Cost: %d</string>
 </resources>
