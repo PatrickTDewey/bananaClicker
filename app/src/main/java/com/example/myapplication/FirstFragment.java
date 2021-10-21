@@ -20,6 +20,11 @@ public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
     private TextView showCountTextView;
+    private TextView gpcTextView;
+    private TextView bpcTextView;
+    private TextView gpbTextView;
+    private TextView levelTextView;
+    private TextView prestigeTextView;
 //    private Integer count;
     private Integer bpcU;
     private Integer gpbU;
@@ -61,6 +66,11 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         showCountTextView = binding.textviewFirst;
+        gpbTextView = binding.gpbTextView;
+        gpcTextView = binding.gpcTextView;
+        bpcTextView = binding.bpcTextView;
+        levelTextView = binding.levelTV;
+        prestigeTextView = binding.prestigeTV;
         SQLiteDatabase my_db = requireActivity().openOrCreateDatabase("banana.db", 0, null);
         Cursor query = my_db.rawQuery("SELECT * FROM user;", null);
         if (query.moveToFirst()) {
@@ -72,6 +82,13 @@ public class FirstFragment extends Fragment {
             System.out.println(bpcU);
             System.out.println("prestige: " + prestige);
             System.out.println("level: " + level);
+            bpcM = (bpcU +1) * level * prestige;
+            gpbM = (gpbU +1) * level * prestige;
+            gpcTextView.setText(getString(R.string.gpcTVstring, (bpcM * gpbM)));
+            gpbTextView.setText(getString(R.string.gpbTVstring, gpbM));
+            bpcTextView.setText(getString(R.string.bpcTVstring, bpcM));
+            levelTextView.setText(getString(R.string.levelTVstring, level));
+            prestigeTextView.setText(getString(R.string.prestigeTVstring, prestige));
         }
         query.close();
         my_db.close();
@@ -86,7 +103,7 @@ public class FirstFragment extends Fragment {
                         .navigate(action);
             }
         });
-        binding.toastButton.setOnClickListener(new View.OnClickListener(){
+        binding.levelUp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Toast myToast = Toast.makeText(getActivity(), "Hello toast!", Toast.LENGTH_SHORT);

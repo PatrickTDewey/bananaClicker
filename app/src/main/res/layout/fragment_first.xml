@@ -39,7 +39,7 @@
         app:layout_constraintVertical_bias="0.302" />
 
     <Button
-        android:id="@+id/toast_button"
+        android:id="@+id/level_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -76,6 +76,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_first"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/bpcTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/bpcTVstring"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gpcTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/gpcTVstring"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/gpbTextView"
+        app:layout_constraintStart_toEndOf="@+id/bpcTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gpbTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/gpbTVstring"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/levelTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/levelTVstring"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/textview_first"
+        app:layout_constraintEnd_toEndOf="@+id/bpcTextView"
+        app:layout_constraintStart_toStartOf="@+id/bpcTextView"
+        app:layout_constraintTop_toBottomOf="@+id/bpcTextView" />
+
+    <TextView
+        android:id="@+id/prestigeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/prestigeTVstring"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/textview_first"
+        app:layout_constraintEnd_toEndOf="@+id/gpbTextView"
+        app:layout_constraintStart_toEndOf="@+id/gpcTextView"
+        app:layout_constraintTop_toBottomOf="@+id/gpbTextView" />
 
 
     <!--    <Button-->
