@@ -25,7 +25,7 @@ public class FirstFragment extends Fragment {
     private TextView gpbTextView;
     private TextView levelTextView;
     private TextView prestigeTextView;
-//    private Integer count;
+//    private Integer count; // another comment
     private Integer bpcU;
     private Integer gpbU;
     private Integer prestige =1;
