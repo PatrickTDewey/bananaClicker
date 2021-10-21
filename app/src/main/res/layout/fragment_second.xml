@@ -56,4 +56,35 @@
         app:layout_constraintEnd_toStartOf="@+id/bananaperclick"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bananaperclick" />
+
+    <Button
+        android:id="@+id/goldperbanana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gpbButtonText"
+        app:layout_constraintBottom_toTopOf="@+id/button_second"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bananaperclick"
+        app:layout_constraintVertical_bias="0.19999999" />
+
+    <TextView
+        android:id="@+id/gpbUText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gpbUText"
+        app:layout_constraintBottom_toBottomOf="@+id/goldperbanana"
+        app:layout_constraintEnd_toStartOf="@+id/goldperbanana"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/goldperbanana" />
+
+    <TextView
+        android:id="@+id/gpbCostText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gpbCostText"
+        app:layout_constraintBottom_toBottomOf="@+id/goldperbanana"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/goldperbanana"
+        app:layout_constraintTop_toTopOf="@+id/goldperbanana" />
 </androidx.constraintlayout.widget.ConstraintLayout>
