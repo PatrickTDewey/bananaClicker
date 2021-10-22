@@ -30,8 +30,8 @@ public class FirstFragment extends Fragment {
     private Integer gpbU;
     private Integer prestige =1;
     private Integer level =1;
-    private Integer bpcM;
-    private Integer gpbM;
+    private Integer bpcM =1;
+    private Integer gpbM =1;
 
     @Override
     public View onCreateView(

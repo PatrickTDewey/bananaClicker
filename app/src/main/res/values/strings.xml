@@ -25,4 +25,7 @@
     <string name="levelTVstring">Level: \n%d</string>
     <string name="prestigeTVstring">Prestige:\n%d</string>
     <string name="level_up">Level Up</string>
+    <string name="levelButtonString">Level++</string>
+    <string name="levelUTVstring">%d</string>
+    <string name="levelCostTV">Cost: %d</string>
 </resources>
