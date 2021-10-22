@@ -25,6 +25,7 @@ public class SecondFragment extends Fragment {
     private Integer level;
     private Integer intBcpPrice;
     private Integer intGpbPrice;
+    private Integer intLvlPrice;
 
     @Override
     public View onCreateView(
@@ -61,6 +62,8 @@ public class SecondFragment extends Fragment {
         TextView bpcUpgrades = binding.bpcView;
         TextView gpbUpgrades = binding.gpbUText;
         TextView gpbPriceView = binding.gpbCostText;
+        TextView levelUpgrades = binding.levelUTV;
+        TextView levelCost = binding.levelCostTV;
 
         headerView.setText(countText);
 
@@ -77,6 +80,13 @@ public class SecondFragment extends Fragment {
         gpbPriceView.setText(gpbPriceText);
         String gpbUpgradesText = getString(R.string.gpbUText, (gpbU +1));
         gpbUpgrades.setText(gpbUpgradesText);
+
+        double levelPrice = 1000000 * Math.pow(3.15, (level-1));
+        intLvlPrice = (int) Math.floor(levelPrice);
+        String lvlCostText = getString(R.string.levelCostTV, intLvlPrice);
+        levelCost.setText(lvlCostText);
+        String lvlUpgradesText = getString(R.string.levelUTVstring, level);
+        levelUpgrades.setText(lvlUpgradesText);
 
 
 
@@ -127,6 +137,28 @@ public class SecondFragment extends Fragment {
                     gpbPriceView.setText(gpbPriceText);
                     String gpbUpgradesText = getString(R.string.gpbUText, (gpbU +1));
                     gpbUpgrades.setText(gpbUpgradesText);
+                } else {
+                    Toast myToast = Toast.makeText(getActivity(), "Insufficient Funds :( CLICK MOAR", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+
+            }
+        });
+        binding.levelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count >= intLvlPrice){
+                    count -= intLvlPrice;
+                    level++;
+                    String countText = getString(R.string.random_text, count);
+                    headerView.setText(countText);
+                    double levelPrice = 1000000 * Math.pow(3.15, (level-1));
+                    intLvlPrice = (int) Math.floor(levelPrice);
+                    String lvlCostText = getString(R.string.levelCostTV, intLvlPrice);
+                    levelCost.setText(lvlCostText);
+                    String lvlUpgradesText = getString(R.string.levelUTVstring, level);
+                    levelUpgrades.setText(lvlUpgradesText);
+
                 } else {
                     Toast myToast = Toast.makeText(getActivity(), "Insufficient Funds :( CLICK MOAR", Toast.LENGTH_SHORT);
                     myToast.show();
