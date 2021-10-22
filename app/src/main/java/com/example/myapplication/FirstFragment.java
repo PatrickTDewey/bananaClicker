@@ -25,7 +25,7 @@ public class FirstFragment extends Fragment {
     private TextView gpbTextView;
     private TextView levelTextView;
     private TextView prestigeTextView;
-//    private Integer count; // another comment
+    //  private Integer count;
     private Integer bpcU;
     private Integer gpbU;
     private Integer prestige =1;
@@ -103,13 +103,7 @@ public class FirstFragment extends Fragment {
                         .navigate(action);
             }
         });
-        binding.levelUp.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Toast myToast = Toast.makeText(getActivity(), "Hello toast!", Toast.LENGTH_SHORT);
-                myToast.show();
-            }
-        });
+
         binding.countButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {

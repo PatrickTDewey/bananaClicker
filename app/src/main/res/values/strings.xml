@@ -2,8 +2,8 @@
     <string name="app_name">My Application</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="first_fragment_label">Banana Clicker</string>
+    <string name="second_fragment_label">Banana Clicker Store</string>
     <string name="previous">Leave Store</string>
     <string name="toast_button">Level Up</string>
     <string name="count_button">COUNT</string>
@@ -24,4 +24,5 @@
     <string name="gpbTVstring">Gold/Banana: \n%d</string>
     <string name="levelTVstring">Level: \n%d</string>
     <string name="prestigeTVstring">Prestige:\n%d</string>
+    <string name="level_up">Level Up</string>
 </resources>
