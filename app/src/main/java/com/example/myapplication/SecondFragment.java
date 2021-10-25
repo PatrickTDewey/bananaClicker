@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -26,7 +28,7 @@ public class SecondFragment extends Fragment {
     private Integer intBcpPrice;
     private Integer intGpbPrice;
     private Integer intLvlPrice;
-
+    private Integer intPrestigePrice;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -54,8 +56,105 @@ public class SecondFragment extends Fragment {
         }
         query.close();
         my_db.close();
+        updateScreen();
 
 
+
+        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(SecondFragment.this)
+                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+            }
+        });
+
+        binding.bananaperclick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if (count >= intBcpPrice) {
+                    count -= intBcpPrice;
+                    bpcU++;
+                    updateScreen();
+
+
+                } else {
+                    Toast myToast = Toast.makeText(getActivity(), "Insufficient Funds :( CLICK MOAR", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+            }
+
+        });
+        binding.goldperbanana.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (count >= intGpbPrice){
+                    count -= intGpbPrice;
+                    gpbU++;
+                    updateScreen();
+                } else {
+                    Toast myToast = Toast.makeText(getActivity(), "Insufficient Funds :( CLICK MOAR", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+
+            }
+        });
+        binding.levelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count >= intLvlPrice){
+                    count -= intLvlPrice;
+                    level++;
+                    updateScreen();
+
+                } else {
+                    Toast myToast = Toast.makeText(getActivity(), "Insufficient Funds :( CLICK MOAR", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+
+            }
+        });
+        binding.prestigeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count >= intPrestigePrice) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
+                    builder.setCancelable(true);
+                    builder.setTitle("Confirm Prestige");
+                    builder.setMessage("Prestiging will clear all current progress in exchange for a new permanent multiplier");
+                    builder.setPositiveButton("Confirm",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    prestige++;
+                                    gpbU = 0;
+                                    bpcU = 0;
+                                    level = 1;
+                                    count = 0;
+                                    updateScreen();
+
+                                }
+                            });
+                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else {
+                    Toast myToast = Toast.makeText(getActivity(), "Insufficient Funds :( CLICK MOAR", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+            }
+        });
+
+    }
+
+    private void updateScreen() {
         String countText = getString(R.string.random_text, count);
         TextView bpcPriceView = binding.bpcPrice;
         TextView headerView = binding.textView;
@@ -64,6 +163,7 @@ public class SecondFragment extends Fragment {
         TextView gpbPriceView = binding.gpbCostText;
         TextView levelUpgrades = binding.levelUTV;
         TextView levelCost = binding.levelCostTV;
+        TextView prestigeCostView = binding.prestigeCostTV;
 
         headerView.setText(countText);
 
@@ -88,85 +188,13 @@ public class SecondFragment extends Fragment {
         String lvlUpgradesText = getString(R.string.levelUTVstring, level);
         levelUpgrades.setText(lvlUpgradesText);
 
+        double prestigePrice = 20000000 * Math.pow(3.15, (prestige-1));
+        intPrestigePrice = (int) Math.floor(prestigePrice);
+        String prestigeCostText = getString(R.string.prestigeCostString, intPrestigePrice);
+        prestigeCostView.setText(prestigeCostText);
 
-
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-            }
-        });
-        binding.bananaperclick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                if (count >= intBcpPrice) {
-                    count -= intBcpPrice;
-                    bpcU++;
-                    String countText = getString(R.string.random_text, count);
-                    headerView.setText(countText);
-                    double bpcPrice = 10 * Math.pow(1.15, bpcU);
-                    intBcpPrice = (int) Math.floor(bpcPrice);
-                    String priceText = getString(R.string.bpcPrice, intBcpPrice);
-                    bpcPriceView.setText(priceText);
-                    String bpcText = getString(R.string.bpcView, (bpcU + 1));
-                    bpcUpgrades.setText(bpcText);
-                    System.out.println("Integer Price: " + intBcpPrice);
-
-                } else {
-                    Toast myToast = Toast.makeText(getActivity(), "Insufficient Funds :( CLICK MOAR", Toast.LENGTH_SHORT);
-                    myToast.show();
-                }
-            }
-
-        });
-        binding.goldperbanana.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (count >= intGpbPrice){
-                    count -= intGpbPrice;
-                    gpbU++;
-                    String countText = getString(R.string.random_text, count);
-                    headerView.setText(countText);
-                    double gpbPrice = 10 * Math.pow(1.15, gpbU);
-                    intGpbPrice = (int) Math.floor(gpbPrice);
-                    String gpbPriceText = getString(R.string.gpbCostText, intGpbPrice);
-                    gpbPriceView.setText(gpbPriceText);
-                    String gpbUpgradesText = getString(R.string.gpbUText, (gpbU +1));
-                    gpbUpgrades.setText(gpbUpgradesText);
-                } else {
-                    Toast myToast = Toast.makeText(getActivity(), "Insufficient Funds :( CLICK MOAR", Toast.LENGTH_SHORT);
-                    myToast.show();
-                }
-
-            }
-        });
-        binding.levelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (count >= intLvlPrice){
-                    count -= intLvlPrice;
-                    level++;
-                    String countText = getString(R.string.random_text, count);
-                    headerView.setText(countText);
-                    double levelPrice = 1000000 * Math.pow(3.15, (level-1));
-                    intLvlPrice = (int) Math.floor(levelPrice);
-                    String lvlCostText = getString(R.string.levelCostTV, intLvlPrice);
-                    levelCost.setText(lvlCostText);
-                    String lvlUpgradesText = getString(R.string.levelUTVstring, level);
-                    levelUpgrades.setText(lvlUpgradesText);
-
-                } else {
-                    Toast myToast = Toast.makeText(getActivity(), "Insufficient Funds :( CLICK MOAR", Toast.LENGTH_SHORT);
-                    myToast.show();
-                }
-
-            }
-        });
     }
+
 
     @Override
     public void onDestroyView() {
