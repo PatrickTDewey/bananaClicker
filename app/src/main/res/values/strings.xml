@@ -28,4 +28,6 @@
     <string name="levelButtonString">Level++</string>
     <string name="levelUTVstring">%d</string>
     <string name="levelCostTV">Cost: %d</string>
+    <string name="prestigeButtonString">Prestige</string>
+    <string name="prestigeCostString">Available at %d</string>
 </resources>
