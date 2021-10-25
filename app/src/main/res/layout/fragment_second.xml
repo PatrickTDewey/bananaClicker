@@ -40,10 +40,10 @@
         android:id="@+id/bananaperclick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="@string/bpc"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/button_second"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bpcView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.17000002" />
@@ -78,6 +78,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/bananaperclick"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bananaperclick" />
 
@@ -97,6 +98,7 @@
         android:id="@+id/gpbUText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:shadowColor="#000"
         android:shadowDx="-2"
         android:shadowDy="-2"
@@ -106,8 +108,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/goldperbanana"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/goldperbanana"
         app:layout_constraintTop_toTopOf="@+id/goldperbanana" />
 
     <TextView
@@ -143,17 +144,17 @@
         android:id="@+id/levelUTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/levelUTVstring"
+        android:layout_marginEnd="8dp"
         android:shadowColor="#000"
         android:shadowDx="-2"
         android:shadowDy="-2"
         android:shadowRadius="2"
+        android:text="@string/levelUTVstring"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/levelButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/levelButton"
         app:layout_constraintTop_toTopOf="@+id/levelButton" />
 
     <TextView
@@ -177,11 +178,11 @@
         android:id="@+id/prestigeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:backgroundTint="#FF0707"
         android:text="@string/prestigeButtonString"
         app:layout_constraintBottom_toTopOf="@+id/button_second"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/levelButton"
+        app:layout_constraintStart_toStartOf="@+id/levelButton"
         app:layout_constraintTop_toBottomOf="@+id/levelCostTV" />
 
     <TextView
@@ -200,4 +201,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/prestigeButton"
         app:layout_constraintTop_toTopOf="@+id/prestigeButton" />
+
+    <Button
+        android:id="@+id/bpcMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bpcMaxString"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/bpcPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bananaperclick"
+        app:layout_constraintTop_toTopOf="@+id/bananaperclick" />
+
+    <Button
+        android:id="@+id/gpbMaxButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="@string/gpbMaxString"
+        app:layout_constraintBottom_toBottomOf="@+id/goldperbanana"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/goldperbanana"
+        app:layout_constraintTop_toTopOf="@+id/goldperbanana" />
 </androidx.constraintlayout.widget.ConstraintLayout>

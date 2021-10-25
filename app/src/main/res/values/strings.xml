@@ -30,4 +30,6 @@
     <string name="levelCostTV">Cost: %d</string>
     <string name="prestigeButtonString">Prestige</string>
     <string name="prestigeCostString">Available at %d</string>
+    <string name="bpcMaxString">BUY MAX</string>
+    <string name="gpbMaxString">BUY MAX</string>
 </resources>

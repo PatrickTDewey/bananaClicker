@@ -151,6 +151,28 @@ public class SecondFragment extends Fragment {
                 }
             }
         });
+        binding.bpcMax.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                while(count >= intBcpPrice) {
+                    count -= intBcpPrice;
+                    bpcU++;
+                    updateScreen();
+                }
+            }
+        });
+
+        binding.gpbMaxButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                while (count >= intGpbPrice) {
+                    count -= intGpbPrice;
+                    gpbU++;
+                    updateScreen();
+                }
+            }
+
+        });
 
     }
 
