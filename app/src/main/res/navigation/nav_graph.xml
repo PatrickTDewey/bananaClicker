@@ -26,6 +26,6 @@
             app:destination="@id/FirstFragment" />
         <argument
             android:name="myNum"
-            app:argType="integer" />
+            app:argType="long" />
     </fragment>
 </navigation>
