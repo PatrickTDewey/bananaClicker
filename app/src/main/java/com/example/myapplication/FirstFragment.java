@@ -25,13 +25,13 @@ public class FirstFragment extends Fragment {
     private TextView gpbTextView;
     private TextView levelTextView;
     private TextView prestigeTextView;
-    //  private Integer count;
-    private Integer bpcU;
-    private Integer gpbU;
-    private Integer prestige =1;
-    private Integer level =1;
-    private Integer bpcM =1;
-    private Integer gpbM =1;
+    //  private Long count;
+    private Long bpcU;
+    private Long gpbU;
+    private Long prestige =1L;
+    private Long level =1L;
+    private Long bpcM =1L;
+    private Long gpbM =1L;
 
     @Override
     public View onCreateView(
@@ -51,7 +51,7 @@ public class FirstFragment extends Fragment {
         // Get val of text view
         String countString = showCountTextView.getText().toString();
         // Convert to number and increment
-        Integer count = Integer.parseInt(countString);
+        Long count = Long.parseLong(countString);
         if (bpcU == null){
             count++;
         } else {
@@ -60,7 +60,7 @@ public class FirstFragment extends Fragment {
             count += (bpcM * gpbM);
         }
         // Display the new value in the text view
-        showCountTextView.setText(Integer.toString(count));
+        showCountTextView.setText(Long.toString(count));
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -75,10 +75,10 @@ public class FirstFragment extends Fragment {
         Cursor query = my_db.rawQuery("SELECT * FROM user;", null);
         if (query.moveToFirst()) {
             showCountTextView.setText(query.getString(1));
-            bpcU = query.getInt(2);
-            gpbU = query.getInt(3);
-            level = query.getInt(4);
-            prestige = query.getInt(5);
+            bpcU = query.getLong(2);
+            gpbU = query.getLong(3);
+            level = query.getLong(4);
+            prestige = query.getLong(5);
             System.out.println(bpcU);
             System.out.println("prestige: " + prestige);
             System.out.println("level: " + level);
@@ -95,7 +95,7 @@ public class FirstFragment extends Fragment {
         binding.randomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int currentCount = Integer.parseInt(showCountTextView.getText().toString());
+                Long currentCount = Long.parseLong(showCountTextView.getText().toString());
 
                 FirstFragmentDirections.ActionFirstFragmentToSecondFragment action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(currentCount);
 

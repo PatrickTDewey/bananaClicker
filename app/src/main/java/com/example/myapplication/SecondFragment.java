@@ -20,15 +20,15 @@ import com.example.myapplication.databinding.FragmentSecondBinding;
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
-    private Integer count;
-    private Integer bpcU;
-    private Integer gpbU;
-    private Integer prestige;
-    private Integer level;
-    private Integer intBcpPrice;
-    private Integer intGpbPrice;
-    private Integer intLvlPrice;
-    private Integer intPrestigePrice;
+    private Long count;
+    private Long bpcU;
+    private Long gpbU;
+    private Long prestige;
+    private Long level;
+    private Long intBcpPrice;
+    private Long intGpbPrice;
+    private Long intLvlPrice;
+    private Long intPrestigePrice;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -43,15 +43,15 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        Integer count = SecondFragmentArgs.fromBundle(getArguments()).getMyNum();
+//        Long count = SecondFragmentArgs.fromBundle(getArguments()).getMyNum();
         SQLiteDatabase my_db = requireActivity().openOrCreateDatabase("banana.db", 0, null);
         Cursor query = my_db.rawQuery("SELECT * FROM user;", null);
         if (query.moveToFirst()) {
-            count = Integer.parseInt(query.getString(1));
-            bpcU = query.getInt(2);
-            gpbU = query.getInt(3);
-            level = query.getInt(4);
-            prestige = query.getInt(5);
+            count = Long.parseLong(query.getString(1));
+            bpcU = query.getLong(2);
+            gpbU = query.getLong(3);
+            level = query.getLong(4);
+            prestige = query.getLong(5);
 
         }
         query.close();
@@ -129,10 +129,10 @@ public class SecondFragment extends Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     prestige++;
-                                    gpbU = 0;
-                                    bpcU = 0;
-                                    level = 1;
-                                    count = 0;
+                                    gpbU = 0L;
+                                    bpcU = 0L;
+                                    level = 1L;
+                                    count = 0L;
                                     updateScreen();
 
                                 }
@@ -190,28 +190,28 @@ public class SecondFragment extends Fragment {
         headerView.setText(countText);
 
         double bpcPrice = 10 * Math.pow(1.15, bpcU);
-        intBcpPrice = (int) Math.floor(bpcPrice);
+        intBcpPrice = (long) Math.floor(bpcPrice);
         String bcpPriceText = getString(R.string.bpcPrice, intBcpPrice);
         bpcPriceView.setText(bcpPriceText);
         String bpcText = getString(R.string.bpcView, (bpcU + 1));
         bpcUpgrades.setText(bpcText);
 
         double gpbPrice = 10 * Math.pow(1.15, gpbU);
-        intGpbPrice = (int) Math.floor(gpbPrice);
+        intGpbPrice = (long) Math.floor(gpbPrice);
         String gpbPriceText = getString(R.string.gpbCostText, intGpbPrice);
         gpbPriceView.setText(gpbPriceText);
         String gpbUpgradesText = getString(R.string.gpbUText, (gpbU +1));
         gpbUpgrades.setText(gpbUpgradesText);
 
         double levelPrice = 1000000 * Math.pow(3.15, (level-1));
-        intLvlPrice = (int) Math.floor(levelPrice);
+        intLvlPrice = (long) Math.floor(levelPrice);
         String lvlCostText = getString(R.string.levelCostTV, intLvlPrice);
         levelCost.setText(lvlCostText);
         String lvlUpgradesText = getString(R.string.levelUTVstring, level);
         levelUpgrades.setText(lvlUpgradesText);
 
         double prestigePrice = 20000000 * Math.pow(3.15, (prestige-1));
-        intPrestigePrice = (int) Math.floor(prestigePrice);
+        intPrestigePrice = (long) Math.floor(prestigePrice);
         String prestigeCostText = getString(R.string.prestigeCostString, intPrestigePrice);
         prestigeCostView.setText(prestigeCostText);
 
