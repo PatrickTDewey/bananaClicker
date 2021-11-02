@@ -26,8 +26,8 @@ public class FirstFragment extends Fragment {
     private TextView levelTextView;
     private TextView prestigeTextView;
     //  private Long count;
-    private Long bpcU;
-    private Long gpbU;
+    private Long bpcU =0L;
+    private Long gpbU =0L;
     private Long prestige =1L;
     private Long level =1L;
     private Long bpcM =1L;
@@ -82,14 +82,16 @@ public class FirstFragment extends Fragment {
             System.out.println(bpcU);
             System.out.println("prestige: " + prestige);
             System.out.println("level: " + level);
-            bpcM = (bpcU +1) * level * prestige;
-            gpbM = (gpbU +1) * level * prestige;
-            gpcTextView.setText(getString(R.string.gpcTVstring, (bpcM * gpbM)));
-            gpbTextView.setText(getString(R.string.gpbTVstring, gpbM));
-            bpcTextView.setText(getString(R.string.bpcTVstring, bpcM));
-            levelTextView.setText(getString(R.string.levelTVstring, level));
-            prestigeTextView.setText(getString(R.string.prestigeTVstring, prestige));
+
+
         }
+        bpcM = (bpcU +1) * level * prestige;
+        gpbM = (gpbU +1) * level * prestige;
+        gpcTextView.setText(getString(R.string.gpcTVstring, (bpcM * gpbM)));
+        gpbTextView.setText(getString(R.string.gpbTVstring, gpbM));
+        bpcTextView.setText(getString(R.string.bpcTVstring, bpcM));
+        levelTextView.setText(getString(R.string.levelTVstring, level));
+        prestigeTextView.setText(getString(R.string.prestigeTVstring, prestige));
         query.close();
         my_db.close();
         binding.randomButton.setOnClickListener(new View.OnClickListener() {
